@@ -29,7 +29,7 @@
 // - ContactSection
 
 /* --- YOUR IMPORTS GO HERE --- */
-
+import HeroSection from "./components/HeroSection"
 
 // STEP 2: Create and export the App component
 // Use: export default function App() { ... }
@@ -54,3 +54,48 @@
 // for the navigation links in the NavBar.
 
 /* --- YOUR COMPONENT CODE GOES HERE --- */
+export default function App(){
+
+    return (
+      <div className="app">
+        <section ClassName="hero bg-hero">
+          <div className="hero-grid">
+            <HeroSection />
+          </div>
+        </section>
+
+
+        {/* features / Carousel */}
+        <sectino className="feature bg-features" id="shop">
+
+        </sectino>
+
+        {/* Product showcase */}
+        <section className="bg-cta">
+
+        </section>
+
+        {/* CTA */}
+        <section className="bg-cta">
+
+        </section>
+
+        {/* About */}
+        <section className="bg-cta" id="about">
+
+        </section>
+
+        {/* contact */}
+        <section className="bg-cta" id="contact">
+
+        </section>
+
+        {/* footer */}
+        <section className="bg-footer">
+
+        </section>
+
+        
+      </div>
+    );
+}
