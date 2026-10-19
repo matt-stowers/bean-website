@@ -29,16 +29,15 @@
 // Import the logo: import logo from "../assets/Beans_logo.png"
 
 /* --- YOUR IMPORTS GO HERE --- */
-// useEffect - tuns after render, useRef - holds a dom reference
-import { useEffect, useRef } from "react"; //named imports
+//useEffect -> runs after render, useRef --> holds a dom reference
+import { useEffect, useRef } from "react";
 
-// leaflet (interactive maps) // default imports
+//leaflet (interactive maps)
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Separator from "./ui/Separator";
 import ScrollReveal from "./ui/ScrollReveal";
 import logo from "../assets/Beans_logo.png";
-import { supportedWaapiEasing } from "framer-motion";
 
 // STEP 2: Navigation data (outside the component)
 // Create a `navigation` object with these keys:
@@ -97,13 +96,13 @@ const navigation = {
   company: [
     { name: "About", href: "#about" },
     { name: "Our Roastery", href: "#about" },
-    { name: "Carreers", href: "#" },
+    { name: "Careers", href: "#" },
     { name: "Press", href: "#" },
   ],
   support: [
     { name: "Contact Us", href: "#contact" },
     { name: "Shipping & Return", href: "#" },
-    { name: "FAQs", href: "#" },
+    { name: "FAQ", href: "#" },
     { name: "Wholesale", href: "#contact" },
   ],
   social: [
@@ -145,26 +144,26 @@ const navigation = {
   ],
 };
 
-// read once so the copyright line stays current
+// read once once so the copyright line stays current
 const currentYear = new Date().getFullYear();
 
 function LocationMap() {
   const mapRef = useRef(null); // the div the map draws into
-  const mapInstance = useRef(null); // the built map, don't build it twice
+  const mapInstance = useRef(null); // the built map, dont build it twice
 
-  //useEffect - runs a function after React has put the component on the screen.
+  //useEffect --> runs a function after React has put the component on the screen.
   useEffect(() => {
-    // stop rendering if the map aleady exists or the target div isn't ready
+    // stop rendering if the map already exists or the target div isnt ready
     if (mapInstance.current || !mapRef.current) return;
 
     // where the map centers
-    const lat = 38.7386;
+    const lat = 39.7386;
     const lng = -104.3256;
 
     const map = L.map(mapRef.current, {
       center: [lat, lng],
       zoom: 14,
-      scroolWheelZone: false,
+      scrollWheelZoom: false,
       zoomControl: true,
       attributionControl: true,
     });
@@ -207,15 +206,14 @@ function LocationMap() {
       );
 
     mapInstance.current = map;
-
-    //cleanup on unmount, so the map doesn't leak over to the next render
+    //cleanup on unmount, so the map doesnt leak
     return () => {
       map.remove();
       mapInstance.current = null;
     };
-  }, []); // [] - means only going to run once
+  }, []); // []  --> means only going to run once
 
-  // the empty div leaflet fills with the map
+  //the empty div leaflet fills with the map
 
   return (
     <div
@@ -240,14 +238,14 @@ export default function FooterSection() {
           {/* logo, blurb, and social icons */}
           <ScrollReveal
             animation="fadeUp"
-            className="col-cpan-2 md:col-span-1 space-y-4"
+            className="col-span-2 md:col-span-1 space-y-4"
           >
             <img
               alt="The Beans Place Logo"
               src={logo}
               className="h-24 w-auto place-self-center md:place-self-auto"
             />
-            <p className="footer-description justify-self-center text-color md:justify-self-auto md:text-left">
+            <p className="footer-description justify-self-center text-center md:justify-self-auto md:text-left">
               Premium coffee beans, roasted to order and shipped fresh. From our
               roastery to your cup since 2012.
             </p>
@@ -287,16 +285,14 @@ export default function FooterSection() {
             </ul>
           </ScrollReveal>
 
-          <ScrollReveal animation="fadeUp" delay={.3}>
+          <ScrollReveal animation="fadeUp" delay={0.3}>
             <h4 className="footer-col">Support</h4>
-            <ul role="list" className="footer-link mt-4">
-                {navigation.support.map((item) => (
-                    <li key={item.name}>
-                        <a href={item.href}>
-                            {item.name}
-                        </a>
-                    </li>
-                ))}
+            <ul role="list" className="footer-links mt-4">
+              {navigation.support.map((item) => (
+                <li key={item.name}>
+                  <a href={item.href}>{item.name}</a>
+                </li>
+              ))}
             </ul>
           </ScrollReveal>
         </div>
@@ -305,9 +301,7 @@ export default function FooterSection() {
 
         {/* bottom bar - year is filled in */}
         <div className="footer-bottom">
-            <p>&copy; {currentYear} The Beans Place, LLC.
-                All Rights Reserved.
-            </p>
+          <p>&copy; {currentYear} The Beans Place, LLC. All rights reserved.</p>
         </div>
       </div>
     </footer>
