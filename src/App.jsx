@@ -29,9 +29,11 @@
 // - ContactSection
 
 /* --- YOUR IMPORTS GO HERE --- */
+import FeaturesSection from "./components/FeaturesSection";
 import FooterSection from "./components/FooterSection";
 import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
+import RibbonTicker from "./components/RibbonTicker";
 
 // STEP 2: Create and export the App component
 // Use: export default function App() { ... }
@@ -60,15 +62,20 @@ export default function App() {
   return (
     <div className="app">
         <NavBar />
-        
+
       <section className="hero bg-hero">
         <div className="hero-grid">
           <HeroSection />
         </div>
       </section>
 
+        <div>
+            <RibbonTicker />
+        </div>
       {/* features / Carousel */}
-      <section className="feature bg-features" id="shop"></section>
+      <section className="feature bg-features" id="shop">
+        <FeaturesSection />
+      </section>
 
       {/* Product showcase */}
       <section className="bg-cta"></section>

@@ -32,7 +32,23 @@
 //   imgColombianSupremo, imgEthiopianHarrar, imgArabianMocha
 
 /* --- YOUR IMPORTS GO HERE --- */
+import { useEffect, useRef, useState } from "react";
 
+import imgRedSulawesi from "../assets/Red-Sulawesi-Bag.png";
+import imgUrigacheffe from "../assets/Urigacheffe-Bag.png";
+import imgTanzaniaPeaberry from "../assets/Tanzania-Peaberry-Bag.png";
+import imgPanamaGeisha from "../assets/Panama-Geisha.png";
+import imgVietnameserobusta from "../assets/Vietnamese-Robusta.png";
+import imgBrazilianSantos from "../assets/Brazilian-Santos-Bag.png";
+import imgCostaRicaTarrazu from "../assets/Costa-Rica-Tarrazu-Bag.png";
+import imgGuatemalaAntigua from "../assets/Guatemala-Antigua-Bag.png";
+import imgKenyaAA from "../assets/Kenya-AA-Bag.png";
+import imgSumatraMandheling from "../assets/Sumatra-Mandheling-Bag.png";
+import imgKona from "../assets/Kona-Bag.png";
+import imgJamaicanBlueMountain from "../assets/Jamaican-Blue-Mountain-Bag.png";
+import imgColombianSupremo from "../assets/Colombian-Supremo-Bag.png";
+import imgEthiopianHarrar from "../assets/Ethiopian-Harrar-Bag.png";
+import imgArabianMocha from "../assets/Arabian-Mocha-Bag.png";
 
 // STEP 2: Define three row arrays (outside the component)
 // Each row contains the same images but in different orders.
@@ -90,3 +106,123 @@
 //      </section>
 
 /* --- YOUR COMPONENT CODE GOES HERE --- */
+
+const row1 = [
+    imgRedSulawesi,
+    imgUrigacheffe,
+    imgTanzaniaPeaberry,
+    imgPanamaGeisha,
+    imgVietnameserobusta,
+    imgBrazilianSantos,
+    imgCostaRicaTarrazu,
+    imgGuatemalaAntigua,
+    imgKenyaAA,
+    imgSumatraMandheling,
+    imgKona,
+    imgJamaicanBlueMountain,
+    imgColombianSupremo,
+    imgEthiopianHarrar,
+    imgArabianMocha
+];
+
+const row2 = [
+  imgKona,
+  imgColombianSupremo,
+  imgPanamaGeisha,
+  imgSumatraMandheling,
+  imgUrigacheffe,
+  imgArabianMocha,
+  imgBrazilianSantos,
+  imgTanzaniaPeaberry,
+  imgJamaicanBlueMountain,
+  imgVietnameserobusta,
+  imgGuatemalaAntigua,
+  imgRedSulawesi,
+  imgEthiopianHarrar,
+  imgKenyaAA,
+  imgCostaRicaTarrazu,
+];
+
+const row3 = [
+  imgGuatemalaAntigua,
+  imgJamaicanBlueMountain,
+  imgRedSulawesi,
+  imgBrazilianSantos,
+  imgArabianMocha,
+  imgKenyaAA,
+  imgVietnameserobusta,
+  imgEthiopianHarrar,
+  imgCostaRicaTarrazu,
+  imgKona,
+  imgTanzaniaPeaberry,
+  imgSumatraMandheling,
+  imgPanamaGeisha,
+  imgColombianSupremo,
+  imgUrigacheffe,
+];
+
+
+//draw one horizontal row. local to this file since nothing else uses it
+
+
+function ImageRow({images, offset= 0}){
+    const doubled = [...images,...images];
+
+    return (
+        <div className="carousel-row" style={{transform: `translate3d(${offset}px, 0,0)`}}>
+            {doubled.map((src, index) => (
+                <div className="carousel-card" key={`${index}`}>
+                    <img
+                        src={src}
+                        alt={`Coffee Bag ${(index % images.length) + 1}`}
+                        className="carousel-image"
+                        loading="lazy"
+                    />
+                </div>
+            ))}
+        </div>
+    )
+};
+
+
+
+export default function FeaturesSection(){
+    //point at the <section> below once it's on the page
+    const sectionRef = useRef(null);
+
+    //how far each row is slid sideways, in px - one number per row
+    const [offsets, setOffsets] = useState([0,0,0]);
+
+    //useEffect
+
+    useEffect(() => {
+      const handleScroll = () => {
+        if (!sectionRef.current) return;
+
+        const rect = sectionRef.current.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        const progress = 1 - rect.bottom / (viewH + rect.height);
+        const p = Math.max(0, Math.min(1, progress));
+
+        const range = Math.min(window.innerWidth * 0.5, 600);
+
+        setOffsets([-p * range, p * range - range, -p * range * 0.7]);
+      };
+
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    return (
+        //ref links this element to the useRef above
+        <section className="carousel-gallery-section" ref={sectionRef}>
+            <div className="carousel-gallery-container">
+                <ImageRow images={row1} offset={offsets[0]} />
+                <ImageRow images={row2} offset={offsets[1]} />
+                <ImageRow images={row3} offset={offsets[2]} />
+            </div>
+        </section>
+    )
+}
