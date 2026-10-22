@@ -29,10 +29,13 @@
 // - ContactSection
 
 /* --- YOUR IMPORTS GO HERE --- */
+import AboutSection from "./components/AboutSection";
+import CtaSection from "./components/CtaSection";
 import FeaturesSection from "./components/FeaturesSection";
 import FooterSection from "./components/FooterSection";
 import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
+import ProductShowcase from "./components/ProductShowcase";
 import RibbonTicker from "./components/RibbonTicker";
 
 // STEP 2: Create and export the App component
@@ -78,13 +81,19 @@ export default function App() {
       </section>
 
       {/* Product showcase */}
-      <section className="bg-cta"></section>
+      <section className="bg-cta">
+        <ProductShowcase />
+      </section>
 
       {/* CTA */}
-      <section className="bg-cta"></section>
+      <section className="bg-cta">
+        <CtaSection />
+      </section>
 
       {/* About */}
-      <section className="bg-cta" id="about"></section>
+      <section className="bg-cta" id="about">
+        <AboutSection />
+      </section>
 
       {/* contact */}
       <section className="bg-cta" id="contact"></section>
