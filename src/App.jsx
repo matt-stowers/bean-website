@@ -99,10 +99,10 @@ export default function App() {
       <section className="bg-cta" id="contact"></section>
 
       {/* footer */}
-      
       <section className="bg-footer">
           <FooterSection />
       </section>
+      
     </div>
   );
 }
