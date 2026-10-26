@@ -64,7 +64,7 @@ import RibbonTicker from "./components/RibbonTicker";
 export default function App() {
   return (
     <div className="app">
-        <NavBar />
+      <NavBar />
 
       <section className="hero bg-hero">
         <div className="hero-grid">
@@ -72,9 +72,9 @@ export default function App() {
         </div>
       </section>
 
-        <div>
-            <RibbonTicker />
-        </div>
+      <div>
+        <RibbonTicker />
+      </div>
       {/* features / Carousel */}
       <section className="feature bg-features" id="shop">
         <FeaturesSection />
@@ -99,9 +99,8 @@ export default function App() {
       <section className="bg-cta" id="contact"></section>
 
       {/* footer */}
-      
       <section className="bg-footer">
-          <FooterSection />
+        <FooterSection />
       </section>
     </div>
   );
