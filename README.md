@@ -4,8 +4,8 @@ This project started from the Beans Place student template
 ([MMaldo017/Beans_Template](https://github.com/MMaldo017/Beans_Template))
 as part of the ERA.dev web development program.
 
-**What I built:** [e.g. "the React components and page sections: hero, menu, about, and footer"]
+**What I built:** The React components and page sections.
 
-**Provided by the template:** [e.g. "the base project setup, design, and starter content"]
+**Provided by the template:** The base project setup, design, and starter content.
 
-Maintained by [Matt Stowers](https://github.com/matt-stowers).
+Maintained by Matt Stowers(https://github.com/matt-stowers).
