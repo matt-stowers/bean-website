@@ -30,6 +30,7 @@
 
 /* --- YOUR IMPORTS GO HERE --- */
 import AboutSection from "./components/AboutSection";
+import ContactSection from "./components/ContactSection";
 import CtaSection from "./components/CtaSection";
 import FeaturesSection from "./components/FeaturesSection";
 import FooterSection from "./components/FooterSection";
@@ -96,7 +97,9 @@ export default function App() {
       </section>
 
       {/* contact */}
-      <section className="bg-cta" id="contact"></section>
+      <section className="bg-cta" id="contact">
+        < ContactSection />
+      </section>
 
       {/* footer */}
       <section className="bg-footer">
